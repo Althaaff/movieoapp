@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Card from "../components/Card";
 import { lineSpinner } from "ldrs";
+import { uid } from "uid";
 
 lineSpinner.register();
 
@@ -13,7 +14,7 @@ const Explore = () => {
   const [totalPageNo, setTotalPageNo] = useState();
   const [loading, setLoading] = useState(false);
   // console.log('params: ', params.explore);
-  console.log(totalPageNo);
+  // console.log(totalPageNo);
 
   const fetchData = async () => {
     try {
@@ -28,15 +29,15 @@ const Explore = () => {
       });
 
       setTotalPageNo(response.data.total_pages);
-      console.log("discover :", response.data.results);
+      // console.log("discover :", response.data.results);
     } catch (err) {
       console.log("error:", err);
     }
 
-     // Delay to allow spinner to render
-     setTimeout(() => {
+    // Delay to allow spinner to render
+    setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 3000);
   };
 
   const handleScroll = () => {
@@ -72,14 +73,14 @@ const Explore = () => {
             return (
               <Card
                 data={exploreData}
-                key={exploreData.id + "exploreSection"}
+                key={uid()}
                 media_type={params.explore}
               />
             );
           })}
         </div>
 
-      {/* Loading Spinner :- */}
+        {/* Loading Spinner :- */}
         {loading && (
           <div className="flex justify-center my-8">
             <l-line-spinner

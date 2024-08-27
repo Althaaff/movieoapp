@@ -9,6 +9,7 @@ import Devider from "../components/Devider";
 import HorizontalScrollCard from "../components/HorizontalScrollCard";
 import useFetch from "../hooks/useFetch";
 import VideoPlay from "../components/VideoPlay";
+import { uid } from "uid";
 
 const DetailPage = () => {
   const params = useParams();
@@ -141,13 +142,12 @@ const DetailPage = () => {
 
           <Devider />
           <h2 className="font-bold text-lg ">Cast :</h2>
-
           <div className="grid grid-cols-[repeat(auto-fit,96px)] gap-5">
             {castDetails?.cast
               ?.filter((el) => el?.profile_path)
               .map((startCast, index) => {
                 return (
-                  <div className="">
+                  <div className="" key={uid()}>
                     <div>
                       <img
                         className="w-24 h-24 object-cover rounded-full "

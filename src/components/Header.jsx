@@ -8,11 +8,10 @@ import { navigation } from '../constants/navigation'
 const Header = () => {
   const location = useLocation();
   const removeSpace = location?.search?.slice(3)?.split("%20")?.join(" ");
-  console.log('removeSpace :', removeSpace)
   const [searchInput, setSearchInput] = useState(removeSpace);
   const navigate = useNavigate();
 
-  console.log('header locations is:', location)
+  // console.log('header locations is:', location)
 
   useEffect(() => {
     if (searchInput) {

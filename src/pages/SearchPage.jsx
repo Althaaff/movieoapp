@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Card from "../components/Card";
 import { tailChase } from "ldrs";
+import { uid } from "uid";
 tailChase.register();
 
 const SearchPage = () => {
@@ -88,7 +89,7 @@ const SearchPage = () => {
             data.map((searchData) => (
               <Card
                 data={searchData}
-                key={searchData.id + "search"}
+                key={uid()}
                 media_type={searchData.media_type}
               />
             ))
